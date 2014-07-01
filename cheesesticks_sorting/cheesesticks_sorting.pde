@@ -1,32 +1,53 @@
-float [] cheesesticks;
+int [] cheesesticks;
+int i=0;
+int j=0;
+int temp;
 
 void setup(){
-  size(500, 500);
-  cheesesticks = new float[20];
-
-  for(int i = 0; i < cheesesticks.length; i++){
-    cheesesticks[i] = random(500);
+  size(500,500);
+  cheesesticks= new int[20];
+  
+  for(int i=0; i<cheesesticks.length;i++){
+    cheesesticks[i]= (int)random(500);
   }
+  
+  for (int i=0; i<cheesesticks.length;i++){
+    rect(0,i*20, cheesesticks[i],10);
+  }
+  
+  for (int i=0;i<20;i++)
+    println(cheesesticks[i]);
+    
 }
 
 void draw(){
-  for(int i = 0; i < cheesesticks.length; i++){
-    line(0, i*10, cheesesticks[i], i*10);
+ 
+  background(0);
+ 
+  if (i < cheesesticks.length-1) {
+     i++;
+     int temp = cheesesticks[i];
+     delay(800);
+     int j = i;
+     while (j > 0 && temp < cheesesticks[j-1]) {
+       cheesesticks[j] = cheesesticks[j-1];
+       j--;
+     }
+     cheesesticks[j] = temp;
   }
   
-  for(int i = 1; i < cheesesticks.length; i++) {
-    float temp = cheesesticks[i];
-    int j;
-    for(j = i - 1; j >= 0 && temp < cheesesticks[j]; j--){
-      cheesesticks[j+1] = cheesesticks[j];
-    }
-    cheesesticks[j+1] = temp;
-  }
   
-  background(255,255,255);
+  /*for (int i = 0; i < cheesesticks.length; i++) {
+        int temp = cheesesticks[i];
+        int j = i;
+        while (j > 0 && temp < cheesesticks[j-1]) {
+            cheesesticks[j] = cheesesticks[j-1];
+            j--;
+        }
+        cheesesticks[j] = temp;
+    }*/
   
-  for(int i = 0; i < cheesesticks.length; i++){
-    line(0, i*10, cheesesticks[i], i*10);
-  }
-  
+  for (int i=0; i<cheesesticks.length;i++){
+    rect(0,i*20, cheesesticks[i],10);
+}
 }
