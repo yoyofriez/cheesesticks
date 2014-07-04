@@ -1,3 +1,5 @@
+/* @pjs preload = "picture.jpg";*/
+
 int [] cheesesticks;
 int i=0;
 int j=0;
